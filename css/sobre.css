@@ -1,0 +1,34 @@
+/* .sec{
+    display: flex;
+    padding-top: 4rem;
+    justify-content: center;
+} */
+
+.banner_sobre{
+    display: flex;
+    padding-top: 4rem;
+    /* justify-content: center; */
+    height: 150vh;
+    width: 700px;
+    flex-direction: column;
+    padding-left: 400px;
+}
+
+.banner_sobre .titulo{
+    padding-top: 100px;
+    color: #94D40B;
+    font-weight: bold;
+    font-size: 35px;
+    padding-left: 130px;
+    padding-bottom: 50px;
+}
+
+.banner_sobre .texto{
+    padding-top: 40px;
+    width: 600px;
+}
+
+.img_bonenkai{
+    height: 350px;
+    width: 650px;
+}

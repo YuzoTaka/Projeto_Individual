@@ -2,10 +2,10 @@
 
 
 .banner .container{
-    background-image: url(../img/tomodachi.jpeg);
+    background-image: url(../img/Img.png);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position-y: -230px;
+    /* background-position-y: -230px; */
 }
 .fig_text{
     display: flex;

@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seinen Carrão | Sobre</title>
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/sobre.css">
+    <script src="texto.js"></script>
 </head>
+
 <body>
     <div class="header">
         <div class="container">
@@ -19,7 +24,7 @@
                     <a href="#">
                         <li>Sobre</li>
                     </a>
-                    <a href="#">
+                    <a href="eventos.html">
                         <li>Atividades</li>
                     </a>
                     <a href="#">
@@ -36,9 +41,43 @@
             </nav>
         </div>
     </div>
-    <section>
-        <div></div>
+    <section class="sec">
+        <div class="banner_sobre">
+            <div class="titulo">Sobre o Seinen Carrão</div>
+            <img class="img_bonenkai" src="img/bonenkai2 1.png" alt="">
+            <div class="texto">
+                <p id="definicao"></p>
+                <p id="historia"></p>
+                <p id="atualidade"></p>
+            </div>
+        </div>
     </section>
-    
+
+    <footer>
+
+        <div class="div_seta">
+            <a class="a_seta" href="#">
+                <div class="seta"></div>
+            </a>
+        </div>
+        <div class="redes">
+            <a href="#">FaceBook</a>
+            <a href="#">Youtube</a>
+            <a href="#">Instagram</a>
+        </div>
+        <br>
+        <div>seinencarrão@gmail.com</div>
+        <div>Rua Trapicheiro, 85</div>
+
+
+    </footer>
+
 </body>
+
 </html>
+
+<script>
+    definicao.innerHTML = text[0];
+    historia.innerHTML = text[1];
+    atualidade.innerHTML = text[2];
+</script>
