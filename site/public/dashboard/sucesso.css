@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Righteous&family=Sarala&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: poppins, sans-serif;
+}
+
+.container-sucesso {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(255, 255, 255);
+}
+
+.container-sucesso .card {
+    height: 80vh;
+    width: 40vw;
+    border-radius: 12px;
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow: 18px 18px 36px #bebebe,
+        -18px -18px 36px #ffffff;
+
+}
+
+.card h2 {
+    padding: 32px;
+    margin-left: 60px;
+}
+
+.card button {
+    width: 90px;
+    background-color: rgb(22, 153, 20);
+    border: none;
+    margin-top: 100px;
+    margin-left: 220px;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 12px;
+    color: white;
+}
+
+.topo {
+    background-color: rgb(22, 153, 20);
+    width: 100%;
+    height: 120px;
+    border-radius: 12px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-sucesso span {
+    font-size: 42px;
+}

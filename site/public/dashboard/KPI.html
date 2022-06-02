@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenhouse | Dashboard</title>
+    <link rel="shortcut icon" href="../assets/icon/logo.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
+    <script src="../js/funcoes.js"></script>
+    <link rel="stylesheet" href="styledash.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+<body onload="validarSessao(), atualizacaoPeriodica()">
+    <div class="container">
+
+        <!-- COMEÇO ESQUERDA  -->
+
+        <aside>
+            <div class="right">
+                <div class="profile">
+                    <div class="info">
+                        <div class="imagem-profile">
+                            <i class="fa-solid fa-circle-user fa-6x"></i>
+                        </div>
+                        <h3>Olá,
+                            <span id="b_usuario">usuário</span>!
+                            <br>
+                            ID = <span id="b_id">teste</span>
+                        </h3>
+
+                        <small class="text-muted" id="id_cargo">cargo</small>
+                    </div>
+                </div><br>
+            </div>
+            <div class="sidebar">
+                <a href="dashboard.html">
+                <span class="material-icons-sharp">grid_view</span>
+                <h3>Dashboard</h3>
+                </a>
+                <a href="solicitacao.html">
+                    <span class="material-icons-sharp">request_page</span>
+                    <h3>Solicitar serviço</h3>
+                </a>
+                <a href="KPI.html">
+                    <span class="material-symbols-outlined">
+                        analytics
+                    </span>
+                    <h3>KPI</h3>
+                </a>
+                <a onclick="dependente()">
+                    <span class="material-icons-sharp">group_add</span>
+                    <h3>Adicionar dependente</h3>
+                </a>
+                <a href="help.html">
+                    <span class="material-icons-sharp">support_agent</span>
+                    <h3>Está com problemas?</h3>
+                </a>
+                <a href="index.html">
+                    <span class="material-symbols-outlined">
+                        change_circle
+                    </span>
+                    <h3>Alterar Estufa</h3>
+                </a>
+                <a class="btn-logout" onclick="limparSessao()">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Logout</h3>
+                </a>
+
+        </aside>
+        <!-- FIM ESQUERDA  -->
+
+        <!-- COMEÇO MAIN (MEIO)  -->
+        <main>
+            <div class="header">
+
+                <h1>KPI</h1>
+                <div class="top">
+                    <div class="theme-toggler">
+                        <span class="material-icons-sharp active">light_mode</span>
+                        <span class="material-icons-sharp">dark_mode</span>
+                    </div>
+                    <div class="date">
+                        <input type="date">
+                    </div>
+                </div><br>
+                <div class="legenda-pai">
+                    <div class="legenda">
+                        <b class="text-legenda">NORMAL</b>
+                    </div>
+                    <div class="legenda1">
+                        <b class="text-legenda1">ATENÇÃO</b>
+                    </div>
+                    <div class="legenda2">
+                        <b class="text-legenda2">PERIGO</b>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h1>Estufa 1</h1>
+                <div class="temperatura">
+                    <p id="estufa1">-°C</p>
+                </div>
+                <div class="cor-alerta" id="card_1"></div>
+            </div>
+            <div class="card">
+                <h1>Estufa 2</h1>
+                <div class="temperatura">
+                    <p id="estufa2">-°C</p>
+                </div>
+                <div class="cor-alerta" id="card_2"></div>
+            </div>
+            <div class="card">
+                <h1>Estufa 3</h1>
+                <div class="temperatura">
+                    <p id="estufa3">-°C</p>
+                </div>
+                <div class="cor-alerta" id="card_3"></div>
+            </div>
+        </main>
+        <!-- FIM MAIN (MEIO)  -->
+
+        <script src="index.js"></script>
+</body>
+
+</html>
+
+<script>
+
+    function atualizacaoPeriodica() {
+        obterdados(1);
+        obterdados(2);
+        obterdados(3);
+        obterdados(4);
+
+        function sendData() {
+			var http = new XMLHttpRequest();
+			http.open('POST', 'http://localhost:3000/api/sendData', false);
+			http.send(null);
+		}
+
+        setInterval(() => {
+            sendData()
+		}, 2000);
+        setTimeout(atualizacaoPeriodica, 5000);
+    }
+
+    function obterdados(idEstufa) {
+        fetch(`/medidas/tempo-real/${idEstufa}`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        var dados = {
+                            temperatura: resposta[0].temperatura,
+                            umidade: resposta[0].umidade,
+                            luminosidade: resposta[0].luminosidade,
+
+                        }
+
+                        alertar(resposta[0].temperatura,resposta[0].umidade,resposta[0].luminosidade, idEstufa);
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function alertar(temperatura, umidade, luminosidade, idEstufa) {
+        var limitesTemp = {
+            muito_quente: 22,
+            quente: 19,
+            ideal_temp: 16,
+            frio: 13,
+            muito_frio: 9
+        };
+        var limitesUmid = {
+            muito_umido: 70,
+            umido: 64,
+            ideal_umid: 59,
+            seco: 54,
+            muito_seco: 50
+        };
+        var limitesLumin = {
+            muito_claro: 950,
+            claro: 800,
+            ideal_lumin: 730,
+            escuro: 650,
+            muito_escuro: 550
+        };
+
+        var classe_temperatura = 'cor-alerta';
+        var classe_umidade = 'cor-alerta';
+        var classe_luminosidade = 'cor-alerta';
+
+        if (temperatura >= limitesTemp.muito_quente) {
+            classe_temperatura = 'cor-alerta perigo-quente';
+            console.log("caiu no 1")
+        }
+        else if (temperatura < limitesTemp.muito_quente && temperatura >= limitesTemp.quente) {
+            classe_temperatura = 'cor-alerta alerta-quente';
+            console.log("caiu no 2")
+        }
+        else if (temperatura < limitesTemp.quente && temperatura > limitesTemp.frio) {
+            classe_temperatura = 'cor-alerta ideal_temp';
+            console.log("caiu no 3")
+        }
+        else if (temperatura <= limitesTemp.frio && temperatura > limitesTemp.muito_frio) {
+            classe_temperatura = 'cor-alerta alerta-frio';
+            console.log("caiu no 4")
+        }
+        else if (temperatura < limitesTemp.min_temperatura) {
+            classe_temperatura = 'cor-alerta perigo-frio';
+            console.log("caiu no 5")
+        }
+
+        if (umidade >= limitesUmid.muito_umido) {
+            classe_umidade = 'cor-alerta perigo-umido';
+            console.log("caiu no 1")
+        }
+        else if (umidade < limitesUmid.muito_umido && umidade >= limitesUmid.umido) {
+            classe_umidade = 'cor-alerta alerta-umido';
+            console.log("caiu no 2")
+        }
+        else if (umidade < limitesUmid.umido && umidade > limitesUmid.seco) {
+            classe_umidade = 'cor-alerta ideal_umid';
+            console.log("caiu no 3")
+        }
+        else if (umidade <= limitesUmid.seco && umidade > limitesUmid.muito_seco) {
+            classe_umidade = 'cor-alerta alerta-seco';
+            console.log("caiu no 4")
+        }
+        else if (umidade < limitesUmid.min_luminosidade) {
+            classe_umidade = 'cor-alerta perigo-seco';
+            console.log("caiu no 5")
+        }
+
+
+        if (luminosidade >= limitesLumin.muito_claro) {
+            classe_luminosidade = 'cor-alerta perigo-claro';
+            console.log("caiu no 1")
+        }
+        else if (luminosidade < limitesLumin.muito_claro && luminosidade >= limitesLumin.claro) {
+            classe_luminosidade = 'cor-alerta alerta-claro';
+            console.log("caiu no 2")
+        }
+        else if (luminosidade < limitesLumin.claro && luminosidade > limitesLumin.seco) {
+            classe_luminosidade = 'cor-alerta ideal_lumin';
+            console.log("caiu no 3")
+        }
+        else if (luminosidade <= limitesLumin.seco && luminosidade > limitesLumin.muito_seco) {
+            classe_luminosidade = 'cor-alerta alerta-escuro';
+            console.log("caiu no 4")
+        }
+        else if (luminosidade < limitesLumin.min_luminosidade) {
+            classe_luminosidade = 'cor-alerta perigo-escuro';
+            console.log("caiu no 5")
+        }
+
+        var card;
+
+        if (idEstufa == 1) {
+            estufa1.innerHTML = temperatura + "°C";
+            estufa2.innerHTML = umidade + "%";
+            estufa3.innerHTML = luminosidade;
+
+            card1 = card_1
+            card2 = card_2
+            card3 = card_3
+        }
+        //  else if (idEstufa == 2) {
+        //     temp_aquario_2.innerHTML = temperatura + "°C";
+        //     card = card_2
+        // } else if (idEstufa == 3) {
+        //     temp_aquario_3.innerHTML = temperatura + "°C";
+        //     card = card_3
+        // } else if (idEstufa == 4) {
+        //     temp_aquario_4.innerHTML = temperatura + "°C";
+        //     card = card_4
+        // }
+
+        // alterando
+        card1.className = classe_temperatura;
+        card2.className = classe_umidade;
+        card3.className = classe_luminosidade;
+
+    }
+
+</script>
+   

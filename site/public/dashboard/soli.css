@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,500;1,200&display=swap');
+
+* {
+   padding: 0;
+   margin: 0;
+   font-family: 'Nunito', sans-serif;
+}
+
+.simulador {
+   width: 100vw;
+   height: 100vh;
+   background-color: #f2f2f285;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.simulador h4 {
+   cursor: pointer;
+   font-size: larger;
+   background-color: rgb(202, 202, 202);
+   padding: 12px;
+   border-radius: 12px;
+}
+
+.solicitador {
+   height: 60%;
+   width: 40%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   padding: 30px 35px;
+   background: #ffffff;
+   border-radius: 20px;
+   box-shadow: 0px 10px 25px #00000056;
+   width: 400px;
+   margin-left: 120px;
+}
+
+.simulador h1 {
+   font-size: 2.5rem;
+   color: #2b2b2b;
+}
+
+.solicitador h1 {
+   margin-bottom: 12px;
+}
+
+.exibir {
+   width: 60%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   padding: 30px 35px;
+   background: #ffffff;
+   border-radius: 20px;
+   box-shadow: 0px 10px 25px #00000056;
+   width: 400px;
+}
+
+.exibir input {
+   width: 100%;
+   border: none;
+   border-radius: 10px;
+   padding: 15px;
+   background: #f0ffff94;
+   color: #2b2b2b;
+   font-size: 12pt;
+   box-shadow: 0px 10px 25px #00000056;
+   box-sizing: border-box;
+}
+
+.solicitador input {
+   width: 80%;
+   border: none;
+   border-radius: 10px;
+   padding: 8px;
+   background: #f0ffff94;
+   color: #2b2b2b;
+   font-size: 1rem;
+   box-shadow: 0px 10px 25px #00000056;
+   box-sizing: border-box;
+   margin-bottom: 30px;
+}
+
+.solicitador button {
+   width: 100%;
+   padding: 16px 0px;
+   margin: 25px;
+   border: none;
+   border-radius: 8px;
+   outline: none;
+   text-transform: uppercase;
+   font-weight: 800;
+   letter-spacing: 2px;
+   color: #f0ffff;
+   background: #32cd4c;
+   cursor: pointer;
+   box-shadow: 0px 10px 40px -12px #15ff00;
+   transition-duration: 0.4s;
+}
+
+.exibir button {
+   width: 100%;
+   padding: 16px 0px;
+   margin: 25px;
+   border: none;
+   border-radius: 8px;
+   outline: none;
+   text-transform: uppercase;
+   font-weight: 800;
+   letter-spacing: 2px;
+   color: #f0ffff;
+   background: #32cd4c;
+   cursor: pointer;
+   box-shadow: 0px 10px 40px -12px #15ff00;
+   transition-duration: 0.4s;
+}
+
+.exibir button:hover {
+   background-color: #5be754c7;
+   color: #2b2b2b;
+}
+
+#div_resposta {
+   margin-top: 30px;
+   width: 400px;
+   text-align: center;
+}
+
+input.placeholderred::-webkit-input-placeholder {
+   color: red;
+}
+
+.containersimulador1 {
+   background-color: white;
+   height: 400px;
+   width: 600px;
+   margin-top: 25px;
+}
+
+.icons {
+   padding: 50px;
+}
+
+.icons div {
+   margin-left: 10px;
+   font-weight: 600;
+}
+
+.icon2 {
+   background-color: white;
+   height: 110px;
+   padding: 10px;
+   border-radius: 12px;
+   box-shadow: 0px 10px 25px #00000056;
+}
+
+.icon1 {
+   background-color: white;
+   height: 110px;
+   margin-top: 40px;
+   padding: 10px;
+   border-radius: 12px;
+   box-shadow: 0px 10px 25px #00000056;
+   padding-bottom: 25px;
+}
+
+.solicitador textarea {
+   resize: none;
+   border: none;
+   width: 80%;
+   border-radius: 10px;
+   padding: 8px;
+   background: #f0ffff94;
+   color: #2b2b2b;
+   font-size: 1rem;
+   box-shadow: 0px 10px 25px #00000056;
+   box-sizing: border-box;
+   margin-bottom: 30px;
+}
+
+
+.container-sucesso {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 100vh;
+   width: 100vw;
+}
+
+.container-sucesso .card {
+   background-color: #32cd4c;
+   height: 50%;
+   width: 50%;
+}
