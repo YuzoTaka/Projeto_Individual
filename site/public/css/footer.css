@@ -27,6 +27,15 @@ footer .div_seta .a_seta{
     width: 60px;
 }
 
+footer .div_seta {
+    padding-bottom: 20px;
+}
+
+footer .div_seta .img_seta{
+    height: 60px;
+    width: 60px;
+}
+
 footer .redes{
     display: flex;
     width: 300px;

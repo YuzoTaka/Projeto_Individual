@@ -1,0 +1,31 @@
+.banner_sobre{
+    display: flex;
+    padding-top: 4rem;
+    /* justify-content: center; */
+    height: 150vh;
+    width: 700px;
+    flex-direction: column;
+    padding-left: 400px;
+}
+
+.banner_sobre .titulo{
+    padding-top: 100px;
+    color: #94D40B;
+    font-weight: bold;
+    font-size: 35px;
+    padding-left: 280px;
+    padding-bottom: 50px;
+}
+
+.banner_sobre .texto{
+    padding-top: 40px;
+    width: 600px;
+    padding-left: 60px;
+    font-size: 20px;
+}
+
+/* .sec{
+    display: flex;
+    padding-top: 4rem;
+    justify-content: center;
+} */

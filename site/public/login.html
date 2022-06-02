@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seinen Carrão|Cadastro</title>
+    <!-- <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css"> -->
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/funcoes.js"></script>
+    <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container-login">
+        <div class="img-box">
+            <img src="https://a1.cdn.japantravel.com/photo/poi-99-214132/720x720!/okinawa-shuri-castle-214132.jpg"
+                alt="">
+        </div>
+        <a class="sair" href="index.html"><i class="fa-solid fa-person-walking-arrow-right"></i></a>
+        <div class="content-box">
+            <div class="form-box">
+                <h2>Login</h2>
+                <form>
+                    <div class="input-box">
+                        <span>Email</span>
+                        <input type="email" placeholder="@mail.com" id="email_input">
+                    </div>
+                    <div class="input-box">
+                        <span>Senha</span>
+                        <input type="password" placeholder="*****" id="senha_nput">
+                    </div>
+
+                    <div class="input-box">
+                        <input type="submit" value="entrar" onclick="entrar()">
+                    </div>
+                    <div class="remember">
+                        <p>Não tem uma conta? <a href="cadastro.html">Inscrever-se</a></p>
+                    </div>
+                        <div class="remember">
+                            <a href="#">Esqueceu a senha?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    function entrar() {
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            alert("Mensagem de erro para todos os campos em branco");
+            return false;
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "../dashboard/index.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                alert("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+</script>
