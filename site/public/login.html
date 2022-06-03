@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seinen Carrão|Cadastro</title>
+    <title>Seinen Carrão | Login</title>
     <!-- <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css"> -->
     <link rel="stylesheet" href="css/login.css">
@@ -30,37 +30,52 @@
                     </div>
                     <div class="input-box">
                         <span>Senha</span>
-                        <input type="password" placeholder="*****" id="senha_nput">
+                        <input type="password" placeholder="*****" id="senha_input">
                     </div>
-
                     <div class="input-box">
-                        <input type="submit" value="entrar" onclick="entrar()">
+                        <input type="submit" value="Entrar" onclick="entrar()">
                     </div>
                     <div class="remember">
                         <p>Não tem uma conta? <a href="cadastro.html">Inscrever-se</a></p>
                     </div>
-                        <div class="remember">
-                            <a href="#">Esqueceu a senha?</a>
+                    <div class="remember">
+                        <a href="#">Esqueceu a senha?</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
 </body>
-
 </html>
 
 <script>
+
+
     function entrar() {
+        // aguardar();
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
+        // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
-            alert("Mensagem de erro para todos os campos em branco");
+            mensagem_erro.innerHTML = "Preencha todos os campos para prosseguir!";
+            finalizarAguardar();
             return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -86,11 +101,11 @@
                     console.log(JSON.stringify(json));
 
                     sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.NOME_USUARIO = json.nome_razaosocial;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
 
                     setTimeout(function () {
-                        window.location = "../dashboard/index.html";
+                        window.location = "./dashboard/index.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -110,6 +125,10 @@
         })
 
         return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
     }
 
 </script>

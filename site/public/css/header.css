@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
-body{
+body {
     margin: 0;
     padding: 0;
     font-family: 'Inter';
 }
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
-nav{
+nav {
     display: flex;
     gap: 2rem;
     position: fixed;
@@ -25,7 +25,7 @@ nav{
     font-size: 20px;
 }
 
-ul{
+ul {
     display: flex;
     list-style: none;
     padding-left: 300px;
@@ -33,16 +33,82 @@ ul{
     margin-right: 50px;
 }
 
-.header a{
+.header a {
     text-decoration: none;
     color: #94D40B;
-    
+
 }
 
-.header a li{
+.header a li {
     display: flex;
     justify-content: space-between;
     margin-left: 10px;
     margin-right: 5px;
 }
 
+
+
+.child-arrow {
+    display: none;
+    cursor: pointer;
+    z-index: 12;
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    position: absolute;
+    right: 0;
+    top: 4px;
+    transition: transform .3s;
+}
+
+.child-arrow:after {
+    top: 50%;
+    left: 12px;
+    content: '';
+    position: absolute;
+    transition: transform .3s ease-in-out;
+    height: 1px;
+    width: 8px;
+    transform: rotate(45deg);
+    background: currentColor;
+    z-index: 9999;
+    border-radius: 10px
+}
+
+.child-arrow:after {
+    left: 17px;
+    transform: rotate(-45deg)
+}
+
+.toggle-on>a .child-arrow:after,
+.toggle-on>a .child-arrow:before {
+    left: 10px;
+    width: 15px
+}
+
+.toggle-on>a .child-arrow {
+    transform: rotateZ(180deg)
+}
+
+.sub-menu {
+    padding: .6em 0;
+    margin: 0;
+    position: absolute;
+    z-index: 100;
+    opacity: 0;
+    left: -.3em;
+    top: 100%;
+    transform: scale(1, 0);
+    transform-origin: top;
+    box-sizing: border-box;
+    transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .1), 0 3px 12px rgba(0, 0, 0, .12);
+}
+
+.sub-menu a {
+	color: #000 !important;
+}
+
+.sub-menu a:hover {
+	color: #cc2025 !important;
+}
