@@ -51,5 +51,7 @@ INSERT INTO evento VALUES
 INSERT INTO comissao VALUES
 (null, 1, 1, 'Infraestrutura');
 
-SELECT m.nome, c.area, e.nomeEvento,  FROM membro m JOIN comissao c ON idMembro = fkMembro 
+SELECT m.nome, c.area, e.nomeEvento  FROM membro m JOIN comissao c ON idMembro = fkMembro 
 JOIN evento e ON fkEvento = idEvento;
+
+truncate membro;

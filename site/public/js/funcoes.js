@@ -5,7 +5,6 @@ function validarSessao() {
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
     var id = sessionStorage.ID_USUARIO;
-    var fk = sessionStorage.FK_USUARIO;
 
     var h1LoginUsuario = document.getElementById("h1_login_usuario");
 
@@ -14,30 +13,15 @@ function validarSessao() {
         if (h1LoginUsuario != undefined) {
             h1LoginUsuario.innerHTML = email;
         }
-        b_usuario.innerHTML = nome;
-        b_id.innerHTML = id;
+        // b_usuario.innerHTML = nome;
 
         // finalizarAguardar();
-    } 
-    if (fk != 'null') {
-        id_cargo.innerHTML = `Dependente`
-    } else {
-        id_cargo.innerHTML = `Admin`
     }
 
     
     // else {
     //     window.location = "../login.html";
     // }
-}
-
-function dependente() {
-    var fk = sessionStorage.FK_USUARIO;
-    if (fk != 'null') {
-        alert(`Você não tem permissão para adicionar dependente`)
-    } else {
-        window.location = "dependente.html"
-    }
 }
 
 function limparSessao() {

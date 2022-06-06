@@ -16,3 +16,8 @@ var carna = [
     'Nesse evento temos como participantes membros de Seinens de diversos lugares, de instituições nipônicas e pessoas que queiram conhecer e entra nessa experiência. '
 ]
 
+var tomodachi = [
+    'Tomodachi Matsuri é um dos principais eventos organizado pelo Seinen Carrão, o evento conta com diversas apresentações, comida e bingo.',
+    'Originalmente era chamado de Choco Festival, por ser realizado na época da Páscoa, mas com o intuito de renovar o evento, o nome foi alterado.'
+]
+

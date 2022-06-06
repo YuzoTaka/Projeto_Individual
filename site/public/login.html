@@ -14,7 +14,7 @@
     <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body onload="validarSessao()">
     <div class="container-login">
         <div class="img-box">
             <img src="https://a1.cdn.japantravel.com/photo/poi-99-214132/720x720!/okinawa-shuri-castle-214132.jpg"
@@ -34,7 +34,7 @@
                         <input type="password" placeholder="*****" id="senha_input">
                     </div>
                     <div class="input-box">
-                        <input type="submit" value="Entrar" onclick="entrar()">
+                        <input class="btnEntrar" value="Entrar" onclick="entrar()">
                     </div>
                     <div class="remember">
                         <p>Não tem uma conta? <a href="cadastro.html">Inscrever-se</a></p>
@@ -60,24 +60,24 @@
 
         // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Preencha todos os campos para prosseguir!";
-            finalizarAguardar();
+            // cardErro.style.display = "block"
+           alert("Preencha todos os campos para prosseguir!");
+            // finalizarAguardar();
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
 
         if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
-            finalizarAguardar();
+            // cardErro.style.display = "block"
+            alert("Ops, e-mail inválido! Verifique e tente novamente.");
+            // finalizarAguardar();
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
@@ -96,18 +96,15 @@
 
             if (resposta.ok) {
                 console.log(resposta);
-
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-
                     sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome_razaosocial;
-                    sessionStorage.ID_USUARIO = json.idUsuario;
+                    sessionStorage.NOME_USUARIO = json.nome;
 
                     setTimeout(function () {
-                        window.location = "./dashboard/index.html";
-                    }, 1000); // apenas para exibir o loading
+                    window.location = "dashboard/index.html";
+                    },500); // apenas para exibir o loading
 
                 });
 
@@ -117,7 +114,7 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
+                    // finalizarAguardar(texto);
                 });
             }
 
@@ -128,8 +125,8 @@
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
 
 </script>

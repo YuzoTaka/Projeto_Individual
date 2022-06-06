@@ -95,7 +95,7 @@
     color: #a9adb6;
 }
 
-.content-box .form-box .input-box input[type=submit]{
+.content-box .form-box .input-box .btnEntrar{
     background: #94D40B;
     color: #fff;
     outline: none;
@@ -105,9 +105,10 @@
     font-size: 20px;
     transition: 0.3s;
     border-radius: 5px;
+    text-align: center;
 }
 
-.content-box .form-box .input-box input[type=submit]:hover{
+.content-box .form-box .input-box .btnEntrar:hover{
     background-color: #608908;
 }
 
