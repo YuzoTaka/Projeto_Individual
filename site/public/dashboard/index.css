@@ -1,0 +1,37 @@
+.conteiner{
+    height: 100vh;
+}
+.right{
+    height: 100vh;
+    margin-left: 338px;
+    border: 2px solid black;
+}
+
+.carteira{
+    height: 250px;
+    width: 500px;
+    margin-left: 250px;
+    margin-top: 150px;
+    background-color: #94d40b;
+    border: 2px solid #608908;
+    border-radius: 25px;
+    display: flex;
+}
+
+.logo{
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.cardLeft{
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    height: 250px;
+    width: 150px;
+    border-radius: 25px 0 0 25px;
+}
+
+.cardRight{
+    
+}
