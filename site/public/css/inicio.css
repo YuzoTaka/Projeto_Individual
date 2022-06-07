@@ -4,8 +4,8 @@
 .banner .container{
     background-image: url(../assets/img/Img.png);
     background-repeat: no-repeat;
-    background-size: cover;
-    /* background-position-y: -230px; */
+    background-size: contain;
+    width: 100vw;
 }
 .fig_text{
     display: flex;
