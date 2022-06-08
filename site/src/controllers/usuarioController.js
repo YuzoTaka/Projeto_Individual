@@ -106,11 +106,82 @@ function cadastrar(req, res) {
     }
 }
 
+function criar(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var nomeEvento = req.body.nomeEventoServer;
+    var localEvento = req.body.localEventoServer;
+    var dataEvento = req.body.dataEventoServer;
+    var descEvento = req.body.descEventoServer;
+
+    // Faça as validações dos valores
+    if (nomeEvento == undefined) {
+        res.status(400).send("O nome do evento está undefined!");
+    } else if (localEvento == undefined) {
+        res.status(400).send("O local do evento está undefined!");
+    } else if (dataEvento == undefined) {
+        res.status(400).send("A data do evento está undefined!");
+    } else if (descEvento == undefined) {
+        res.status(400).send("A descrição do está undefined!");
+    }  else {
+        
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.criar(nomeEvento,localEvento,dataEvento,descEvento)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function comissao(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var id = req.body.idServer;
+    var selEvento = req.body.selEventoServer;
+    var iptEvento = req.body.iptEventoServer;
+
+    // Faça as validações dos valores
+    if (selEvento == undefined) {
+        res.status(400).send("O nome do evento está undefined!");
+    } else if (iptEvento == undefined) {
+        res.status(400).send("O local do evento está undefined!");
+    } else {
+        
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.comissao(id, selEvento, iptEvento)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 
 
 
 module.exports = {
     entrar,
     cadastrar,
-    listar
+    listar,
+    criar,
+    comissao
 }

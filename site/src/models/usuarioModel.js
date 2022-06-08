@@ -31,9 +31,35 @@ function cadastrar(nome, email, data, cargo, cpf, cel, senha) {
     return database.executar(instrucao);
 }
 
+function criar(nomeEvento,localEvento,dataEvento,descEvento) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function criar():", nomeEvento,localEvento,dataEvento,descEvento);
+
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao = `
+        INSERT INTO evento (nomeEvento, dt, local, descricao) VALUES ('${nomeEvento}', '${dataEvento}','${localEvento}', '${descEvento}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
+function comissao(id, selEvento, iptEvento) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function criar():", id, selEvento, iptEvento);
+
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao = `
+        INSERT INTO comissao (fkMembro, fkEvento, area) VALUES ('${id}', '${selEvento}','${iptEvento}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 
 module.exports = {
     entrar,
     cadastrar,
-    listar
+    listar,
+    criar,
+    comissao
 };

@@ -20,6 +20,14 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
+router.post("/criar", function (req, res) {
+    usuarioController.criar(req, res);
+});
+
+router.post("/comissao", function (req, res) {
+    usuarioController.comissao(req, res);
+});
+
 router.post("/redefinir", function (req, res) {
     usuarioController.redefinir(req, res);
 });
