@@ -6,23 +6,24 @@
     height: 125vh;
 }
 
+.img_tomodachi{
+    height: 55vh;
+}
+
 .banner_sobre .titulo{
     padding-top: 100px;
     color: #94D40B;
     font-weight: bold;
     font-size: 35px;
+    /* padding-left: 220px; */
     padding-bottom: 50px;
 }
 
 .banner_sobre .texto{
     padding-top: 40px;
     width: 600px;
-    font-size: 18px;
-}
-
-.img_bonenkai{
-    height: 350px;
-    width: 650px;
+    /* padding-left: 60px; */
+    font-size: 20px;
 }
 
 p{

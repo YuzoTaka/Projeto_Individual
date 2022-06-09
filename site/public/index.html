@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/inicio.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="shortcut icon" href="assets/icon/logo 1 (1).svg">
+    <script src="js/texto.js"></script>
 </head>
 
 <body>
@@ -28,11 +29,11 @@
                     <div class="dropdown">
                         <a class="atividadesH" href="eventos.html"><span>Atividades</span></a>
                         <div class="dropdown-content">
-                          <a class="undokaiH" href="undokai.html">Undokai</a>
-                          <a class="carnaH" href="carnaseinen.html">CarnaSeinen</a>
-                          <a class="tomodachiH" href="tomodachi.html">Tomodachi Matsuri</a>
+                            <a class="undokaiH" href="undokai.html">Undokai</a>
+                            <a class="carnaH" href="carnaseinen.html">CarnaSeinen</a>
+                            <a class="tomodachiH" href="tomodachi.html">Tomodachi Matsuri</a>
                         </div>
-                      </div>
+                    </div>
                     <a class="galeriaH" href="Galeria.html">
                         <li>Galeria</li>
                     </a>
@@ -56,30 +57,55 @@
                     <div class="fig2">Vamos viver ajudando uns aos outros</div>
                 </div>
             </div>
+            <div class="cards">
+                <div>
+                    <div class="cardItem">
+                        <div class="cardFund">
+                            <img class="fundLogo" src="assets/icon/fundaçãoLogo.svg" alt="">
+                            <h2>Fundação</h2>
+                            <div class="textSpan">
+                                <span class="fundSpan" id="fundacao"></span>
+                            </div>
+                        </div>
+                        <div class="cardValor">
+                            <img class="fundLogo" src="assets/icon/valoresLogo.svg" alt="">
+                            <h2>Valores</h2>
+                            <div class="textSpan">
+                                <span class="valorSpan" id="valor"></span>
+                            </div>
+                        </div>
+                        <div class="cardMis">
+                            <img class="fundLogo" src="assets/icon/missãoLogo.svg" alt="">
+                            <h2>Missão</h2>
+                            <div class="textSpan">
+                                <span class="missaoSpan" id="missao"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
-    <section>
-        <div class="valores">
 
-        </div>
     </section>
     <footer>
-
         <div class="div_seta">
             <a href="#"><img src="assets/img/Group 1.svg" alt="" class="img_seta"></a>
         </div>
         <div class="redes">
-            <a href="#">FaceBook</a>
-            <a href="#">Youtube</a>
-            <a href="#">Instagram</a>
+            <a href="https://www.facebook.com/seinen.carrao"><img src="assets/icon/FaceBook.svg" alt=""></a>
+            <a href="https://www.youtube.com/user/SeinenCarrao"><img src="assets/icon/Youtube.svg" alt=""></a>
+            <a href="https://www.instagram.com/seinencarrao/"><img src="assets/icon/Instagram (1).svg" alt=""></a>
         </div>
         <br>
         <div>seinencarrão@gmail.com</div>
         <div>Rua Trapicheiro, 85</div>
-
-
     </footer>
 </body>
 
-
 </html>
+
+<script>
+    fundacao.innerHTML = item[0];
+    valor.innerHTML = item[1];
+    missao.innerHTML = item[2];
+</script>

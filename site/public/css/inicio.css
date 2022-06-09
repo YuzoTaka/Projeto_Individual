@@ -6,7 +6,10 @@
     background-repeat: no-repeat;
     background-size: contain;
     width: 100vw;
+    height: 150vh;
+    margin-right: 100px;
 }
+
 .fig_text{
     display: flex;
     background-color: rgba(0, 0, 0, 0.5);
@@ -45,6 +48,39 @@
     line-height: 18px;
 }
 
-section .valores{
-    height: 1000px;
+.fundLogo{
+    height: 100px;
+}
+
+.cardItem{
+    display: flex;
+    justify-content: space-around;
+    /* margin-left: 10px; */
+}
+
+.cardFund{
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardValor{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* width: 90px; */
+}
+
+.cardMis{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.textSpan{
+    display: flex;
+    width: 150px;
+    text-align: center;
 }

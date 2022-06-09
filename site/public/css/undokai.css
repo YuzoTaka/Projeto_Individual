@@ -1,11 +1,13 @@
 .banner_sobre{
     display: flex;
-    padding-top: 4rem;
-    /* justify-content: center; */
-    height: 150vh;
-    width: 700px;
+    padding-top: 1rem;
     flex-direction: column;
-    padding-left: 400px;
+    align-items: center;
+    height: 145vh;
+}
+
+.img_undokai{
+    height: 55vh;
 }
 
 .banner_sobre .titulo{
@@ -13,19 +15,19 @@
     color: #94D40B;
     font-weight: bold;
     font-size: 35px;
-    padding-left: 280px;
+    /* padding-left: 280px; */
     padding-bottom: 50px;
 }
+
+
 
 .banner_sobre .texto{
     padding-top: 40px;
     width: 600px;
-    padding-left: 60px;
+    /* padding-left: 60px; */
     font-size: 20px;
 }
 
-/* .sec{
-    display: flex;
-    padding-top: 4rem;
-    justify-content: center;
-} */
+p{
+    text-indent: 50px;
+}

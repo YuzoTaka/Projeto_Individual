@@ -52,5 +52,8 @@ select * from comissao;
 select * from mural;
 
 
+SET FOREIGN_KEY_CHECKS=0;
 SET FOREIGN_KEY_CHECKS=1;
+
+select cargo, count(cargo) as qtdMembro from membro group by cargo;
 

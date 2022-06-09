@@ -40,6 +40,10 @@
     font-weight: 700;
 }
 
+.card{
+    display: flex;
+}
+
 .cardSpan{
     font-weight: 400;
 }

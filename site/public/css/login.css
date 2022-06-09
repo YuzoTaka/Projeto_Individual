@@ -5,6 +5,14 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.imgLogin{
+    background-image: url(../assets/img/login3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    background-position-x: -60px;
+}
+
 .container-login{
     position: relative;
     width: 100%;
