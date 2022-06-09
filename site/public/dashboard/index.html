@@ -48,22 +48,23 @@
 </html>
 
 <script>
-
   function obterdados(idAquario) {
     fetch(`/medidas/tempo-real/${idAquario}`)
       .then(resposta => {
-
+        
         if (resposta.ok) {
           resposta.json().then(resposta => {
 
             console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-              var dados = {
-                membros: resposta[0].qtdMembro,
-                diretorias: resposta[1].qtdMembro,
+            
+            for (let i = 0; i < resposta.length; i++) {
+              var item = resposta[i];
+              if (item.cargo == 'Diretoria') {
+                pessoasDir.innerHTML = item.qtdMembro;
+              } else {
+                pessoasMem.innerHTML = item.qtdMembro
               }
-
-            alertar(resposta[0].qtdMembro, resposta[1].qtdMembro, idAquario);
+            }
           });
         } else {
 
@@ -73,19 +74,6 @@
       .catch(function (error) {
         console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
       });
-
-  }
-
-  function alertar(membros, diretorias) {
-
-
-    pessoasMem.innerHTML = membros
-    pessoasDir.innerHTML = diretorias
-
-
-    // alterando
-    // card.className = classe_temperatura;
-
   }
 
 </script>

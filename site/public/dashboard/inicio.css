@@ -6,8 +6,6 @@
 
 .cards {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     height: 450px;
     width: 100%;
     align-items: center;

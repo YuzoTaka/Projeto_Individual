@@ -18,9 +18,9 @@
         <div class="img-box">
             <img src="https://a1.cdn.japantravel.com/photo/poi-99-214132/720x720!/okinawa-shuri-castle-214132.jpg"
                 alt="">
-        </div>         
-            <a class="sair" href="index.html"><i class="fa-solid fa-person-walking-arrow-right"></i></a>
-            <div class="content-box">      
+        </div>
+        <a class="sair" href="index.html"><i class="fa-solid fa-person-walking-arrow-right"></i></a>
+        <div class="content-box">
             <div class="form-box">
                 <h2>Cadastro</h2>
                 <form>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="input-box">
                         <span>Email:</span>
-                        <input type="email" placeholder="Digite seu email" id="email_input">
+                        <input type="text" placeholder="Digite seu email" id="email_input">
                     </div>
                     <div class="input-box">
                         <span>Data de nascimento:</span>
@@ -58,7 +58,7 @@
                     </div>
                     <div class="input-box">
                         <input type="submit" value="Cadastrar" onclick="cadastrar()">
-                    </div>           
+                    </div>
                     <div class="remember">
                         <a href="login.html">Já tem uma conta?</a>
                     </div>
@@ -68,6 +68,7 @@
     </div>
 
 </body>
+
 </html>
 <script>
     function cadastrar() {
@@ -83,7 +84,7 @@
         var celVar = cel_input.value;
         var senhaVar = senha_input.value;
 
-        if (nomeVar == "" || emailVar ==""|| dtVar == ""||cargoVar == "" || cpfVar== "" ||celVar == "" || senhaVar == "") {
+        if (nomeVar == "" || emailVar == "" || dtVar == "" || cargoVar == "" || cpfVar == "" || celVar == "" || senhaVar == "") {
             // cardErro.style.display = "block"
             alert("Preencha todos os campos para prosseguir!");
 
@@ -116,27 +117,22 @@
                 cargoServer: cargoVar,
                 cpfServer: cpfVar,
                 celServer: celVar,
-                senhaServer: senhaVar
+                senhaServer: senhaVar,
+
             })
         }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                // cardErro.style.display = "block"
+                // cardErro.style.display = "block";
                 alert("Cadastro realizado com sucesso!");
-
-                setTimeout(() => {
-                    window.location = "/login.html";
-                }, "500")
-                // limparFormulario();
-                // finalizarAguardar();
+                window.location = "../login.html";
             } else {
                 alert("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            // finalizarAguardar();
         });
 
         return false;

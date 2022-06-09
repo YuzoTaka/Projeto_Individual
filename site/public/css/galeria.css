@@ -1,0 +1,70 @@
+html{
+    overflow-x: hidden;
+}
+
+.banner_sobre{
+    display: flex;
+    padding-top: 4rem;
+    /* justify-content: center; */
+    height: 200vh;
+    width: 700px;
+    flex-direction: column;
+    padding-left: 400px;
+}
+
+.banner_sobre .titulo{
+    padding-top: 100px;
+    color: #94D40B;
+    font-weight: bold;
+    font-size: 35px;
+    padding-left: 130px;
+    padding-bottom: 50px;
+    margin-right: 150px;
+}
+
+.containerTitulo{
+    display: flex;
+    justify-content: center;
+}
+
+.banner_sobre .texto{
+    padding-top: 40px;
+    width: 600px;
+}
+
+.img_bonenkai{
+    height: 350px;
+    width: 650px;
+}
+
+.containerImgCima{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.containerImgBaixo{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 60px;
+}
+
+.imagens{
+    height: 300px;
+    width: 600px;
+    align-items: flex-start;
+    border-radius: 25px;
+    margin-right: 50px;
+}
+
+.imagensFJ{
+    height: 300px;
+    width: 500px;
+    align-items: flex-start;
+    border-radius: 25px;
+    margin-right: 150px;
+}
+
+.imgLegenda{
+    margin-left: 30px;
+    color: gray;
+}
